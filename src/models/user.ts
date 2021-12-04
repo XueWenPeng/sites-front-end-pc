@@ -1,9 +1,8 @@
 // @ts-nocheck
-
-import { getSrcConfig, simpleLoadImg } from '@/utils/functions';
-
-import Api from '@/utils/request';
+import { message } from 'antd';
 import Cookies from 'js-cookie';
+import { getSrcConfig, simpleLoadImg } from '@/utils/functions';
+import Api from '@/utils/request';
 
 const NAMESPACE = 'user';
 
@@ -114,6 +113,7 @@ export default {
   subscriptions: {
     setup({ dispatch, history }) {
       return history.listen(() => {
+        message.destroy()
         dispatch({
           // type: `${NAMESPACE}/load`,
           type: 'load',

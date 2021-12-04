@@ -3,8 +3,8 @@ import fetch from 'dva/fetch';
 import Cookies from 'js-cookie';
 import Loading from '@/component/loading';
 import Notification from '@/component/Notification';
-import { NO_LOADING_API, NOERROR_API } from './constant';
 import LoginModal from '@/component/loginModal';
+import { NO_LOADING_API, NOERROR_API } from './constant';
 
 /**
  * Requests a URL, returning a promise.
@@ -24,7 +24,7 @@ export default function Api(
   method?: string = 'GET',
   data?: AnyCommonObj,
   isSvg = false,
-): { success: boolean; data: any; totalCount?: number; [x: string]: any } {
+): { success: boolean; data: any; totalCount?: number;[x: string]: any } {
   const _url_ = (isBuild ? url.replace(/api/, '') : url).replace(/\/more/, '');
   const { origin } = window.location;
   const needLoading = NO_LOADING_API.includes(
@@ -59,15 +59,9 @@ export default function Api(
             resolve(result);
           } else {
             reject(result);
-            console.log('result', result);
             if (noError) {
               return;
             }
-            console.log(
-              'parseError((result && result.errorMsg) || result)',
-              parseError((result && result.errorMsg) || result),
-            );
-
             Notification.fail({
               msg: parseError((result && result.errorMsg) || result),
             });

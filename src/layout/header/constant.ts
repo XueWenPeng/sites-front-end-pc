@@ -1,3 +1,5 @@
+import { User } from "state-typings";
+
 export interface Route {
   path?: string;
   title?: string;
@@ -10,6 +12,7 @@ export interface Route {
   permission?: boolean;
   needLogin?: boolean;
   type?: string;
+  onClick?: (arg: User) => boolean
 }
 
 export const routes: Array<Route> = [
@@ -95,12 +98,11 @@ export const routes: Array<Route> = [
     bgColor: '#eadfc8',
     iconfont: 'icon-search1',
   },
-  // {
-  //   path: '/user-center',
-  //   title: '个人中心',
-  //   iconfont: 'iconuser1',
-  //   needLogin: true,
-  // },
+  {
+    path: '/user-center',
+    title: '个人中心',
+    iconfont: 'iconuser2',
+  },
   {
     path: '/more',
     type: 'more',
